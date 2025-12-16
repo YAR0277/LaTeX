@@ -106,6 +106,10 @@ United States' northern border with Canada. In other words, the spherical approx
 the envelope area for states in the southern United States and underestimates envelope area for states 
 in the northern United States.
 
+The relative error in percent of the spherical earth model approximation ranges from a minimum value
+of 0.0009 at latitude 37.785\textdegree to maximum values 0.2634, 0.2454 at latitudes 25.101\textdegree, 
+48.390\textdegree, respectively.
+
 \subsection{Flatland Approximation}
 Another possibility is to project the district envelope onto two dimensional Euclidean space and compute
 the area there. The Equal Earth Projection \cite{ee2018} accomplishes this task. 
@@ -125,6 +129,9 @@ district whose envelope has an area of 314,056 $km^2$.
 The maximum value of -0.0185 $km^2$ at index $3$ is district NY09. This New York district is a small district 
 whose envelope's area is 70 $km^2$. This illustrates the shape distortion in an equal-area projection:
 the greater the area being mapped, the greater the distortion becomes.
+
+The relative error in percent of the flatland approximation ranges from a minimum value
+of 0.0235 to a maximum value of 2.4502.
 
 \section{Comparison with Polsby-Popper Score}
 As representative to compare with the Polsby-Popper score was chosen. 
@@ -310,7 +317,7 @@ It was shown that the Geodetic Envelope Score is a natural measure of district c
 defined using ``parallels'' and ``meridians''; the lines used in the original definition of state boundaries.
 A comparison to the Polsby-Popper score showed that the Geodetic Envelope Score gives more consistent values
 for reasonable district shapes. Two approximations to the Geodetic Envelope Score were given: one based on
-a spherical earth approximation to the earth geoid and one based on projecting envelopes to Euclidean space.
+the spherical earth approximation and one based on projecting envelopes to Euclidean space.
 The limitations of each approximation were illustrated.
 \appendix
 \renewcommand{\theequation}{\Alph{section}.\arabic{equation}}
