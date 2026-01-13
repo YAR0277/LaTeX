@@ -1,5 +1,5 @@
 \documentclass{article}
-\author{David Gore}
+\author{David Gore\thanks{davidgore@protonmail.com}}
 \title{The Geodetic Envelope Score}
 \date{January 13, 2026}
 
@@ -21,6 +21,17 @@
 
 \begin{document}
 \maketitle
+
+\begin{abstract}
+A compactness metric is introduced which can be used to measure the degree of gerrymandering in a U.S. Congressional voting district.
+The metric is defined using a geodetic envelope: a polygon bounded by lines of latitude and longitude on the surface of the earth.
+The metric was motivated by noticing that many of the original state boundaries were defined using meridians and parallels. The
+metric requires that the surface area of a geodetic envelope is calculated; which is done using multiple methods in applied mathematics.
+The resulting compactness scores show many advantages over currently used metrics such as Reock, Polsby-Popper and Schwatzberg. A 
+bond-like rating system based on the new metric is suggested to simplify the communication of a district's compactness score.
+\end{abstract}
+
+\noindent\textbf{Keywords:} Gerrymandering; District Compactness; Geodetic Envelope
 
 \section{Introduction}
 Several measures have been proposed to quantify the degree to which congressional districts are 
@@ -511,6 +522,10 @@ of a geodetic envelope is
 \end{equation*}
 A similar derivation can be done for \eqref{eq:SASphere} by assuming the earth geoid is 
 modeled by a sphere of radius $a$.
+\\
+\\
+On behalf of all authors, the corresponding author states that there is no conflict of interest.
+
 \newpage
 \printbibliography
 \end{document}
