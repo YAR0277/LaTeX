@@ -1,7 +1,7 @@
 \documentclass{article}
 \author{David Gore}
 \title{The Geodetic Envelope Score}
-\date{January 10, 2026}
+\date{January 13, 2026}
 
 \usepackage[
     backend=biber,
@@ -34,9 +34,9 @@ is the ratio of the perimeter of a district to the perimeter of a circle having 
 district.
 
 The book ``How The States Got Their Shapes'', \cite{stein}, documents the history of how the states got 
-their individual boundaries. Boundaries can be natural, political, based on the division of resources, 
-based on a principle such as equality, or be given in the King's charter. The most common state 
-delineators, however, were defined by ``parallels'' or lines of latitude, and ``meridians'' or line of longitude. 
+their boundaries. Boundaries can be natural, political, based on the division of resources, 
+on a principle such as equality, or be given in the King's charter. The most common state 
+boundaries, however, were defined by ``parallels'' or lines of latitude, and ``meridians'' or line of longitude. 
 Kansas, Nebraska, South Dakota and North Dakota all have 3° of latitudinal height. Colorado, 
 Wyoming and Montana all have 4°. Washington, Oregon, Colorado, Wyoming,
 North Dakota and South Dakota all have about 7° of longitudinal width. The southern borders of Virginia,
@@ -77,7 +77,7 @@ In this equation $e'$ is called the second eccentricity of the earth; it is give
 the formula $e'=((a^2-b^2)/b^2)^{1/2}$ and has the value $e'=0.082094$. 
 To check the validity of the above equation for surface area consider the case of rotating a circle,
 that is, set $a=b$, $e'=0$ and $y_1=0$, $y_2=a$. Then $A(S)=2\pi a^2$ which is the surface area of a hemi-sphere. 
-For the general case, evaluating the integral in leads to a formula for the surface area of an envelope
+For the general case, evaluating the above integral leads to a formula for the surface area of an envelope
 \begin{equation}
     A(S) = \frac{ab}{2e'}(sec(u)tan(u)+ln|sec(u)+tan(u)|)\Big|_{u_1}^{u_2}(\lambda_2-\lambda_1)(\frac{\pi}{180})
 \label{eq:SAEllipsoid}
@@ -85,7 +85,11 @@ For the general case, evaluating the integral in leads to a formula for the surf
 Here, longitude ($\lambda$) and latitude ($\varphi$) are given in degrees.
 The limits of integration are $u_1 = tan^{-1}((e'/b)y_1)$, $u_2 = tan^{-1}((e'/b)y_2)$ where 
 $y_1 = N(\varphi_1)(1-e^2)sin(\varphi_1)$ and $y_2 = N(\varphi_2)(1-e^2)sin(\varphi_2)$. 
-A derivation is given in the Appendix.
+$N$ is the earth's prime-vertical radius of curvature and has the formula
+\[
+N(\varphi)=\frac{a}{\sqrt{(1-e^2sin^2(\varphi))}}.
+\]
+A derivation of \eqref{eq:SAEllipsoid} is given in the Appendix.
 
 \subsection{Envelope Area by Map Projection}
 Another possibility of computing the area of a geodetic envelope
@@ -108,8 +112,7 @@ and $D=(\lambda_{min},\varphi_{max})$.
 Since the vertices $A$ and $B$ have the same latitude, they will be projected onto points with the same $y$ 
 value in Euclidean space. 
 Denote the projected points $A'=(x_1,y_1)$, $B'=(x_2,y_1)$, $C'=(x_3,y_2)$ and $D'=(x_4,y_2)$. 
-Let $\partial C$ denote the boundary of the projected envelope. 
-Then a parameterization for $\partial C$ in the positive counter-clockwise
+A parameterization for the boundary of the projected region in the positive counter-clockwise
 direction is,
 \[
 \begin{cases}
@@ -121,7 +124,7 @@ direction is,
     \end{array}
 \end{cases}
 \]
-Using this parameterization to evaluate the line integral stipulated by Green's Theorem gives,
+Using this parameterization to evaluate the line integral in Green's Theorem gives,
 \begin{equation}
     \begin{split}
         A(S) &= \frac{1}{2}(-y_1(x_2-x_1) + x_2(y_2-y_1) \\
@@ -130,9 +133,10 @@ Using this parameterization to evaluate the line integral stipulated by Green's 
 \label{eq:SAProjection}
 \end{equation}
 
-This formula to compute the surface area of the envelope is an alternative to \eqref{eq:SAEllipsoid}. 
+Formula \eqref{eq:SAProjection} is an alternative to \eqref{eq:SAEllipsoid} for computing the 
+surface area of a geodetic envelope. 
 The relative differences in percent between using \eqref{eq:SAEllipsoid} and \eqref{eq:SAProjection} 
-has a maximum value of less than 0.1\%.
+have a maximum value of less than 0.1\%.
 
 \subsection{Envelope Area using Spherical Earth Model}
 If, instead of the reference ellipsoid, a sphere of radius $a$ is taken as a model of the earth,
@@ -141,11 +145,11 @@ If, instead of the reference ellipsoid, a sphere of radius $a$ is taken as a mod
     A(S) = a^2(sin(\varphi_2)-sin(\varphi_1))(\lambda_2-\lambda_1)(\frac{\pi}{180})
 \label{eq:SASphere}
 \end{equation}
-As above, longitude ($\lambda$) and latitude ($\varphi$) are given in degrees.
+As before, longitude ($\lambda$) and latitude ($\varphi$) are given in degrees.
 This formula can be derived in a manner similar to rotating the meridian ellipse about the minor axis.
 The differences in calculated area of envelopes between the ellipsoidal earth-model
 \eqref{eq:SAEllipsoid} and the spherical earth-model
-\eqref{eq:SASphere} are shown in the following Figure ~\ref{fig:CmpAreaSphere}. In this figure the
+\eqref{eq:SASphere} are shown in Figure ~\ref{fig:CmpAreaSphere}. In this figure the
 districts have been sorted by the median latitude of the envelope: districts with lower
 district numbers have a lower median latitude than districts with higher district numbers.
 \begin{figure}[H]
@@ -185,7 +189,7 @@ sphere of radius $R$ is
 The spherical excess is the amount by which the sum of the angles of a spherical triangle exceeds $\pi$ radians.
 To apply Girard's theorem, the interior angles of the spherical triangle need to be found. 
 
-Determining the interior angles in a spherical triangle is known as the Indirect or Inverse Problem of Geodesy \cite{volpe}
+Determining these angles is known as the Indirect or Inverse Problem of Geodesy \cite{volpe}
 \begin{definition}[Inverse Problem of Geodesy]
 Given points $A$ and $B$ with coordinates
 $(\lambda_A,\varphi_A)$ and $(\lambda_B,\varphi_B)$, respectively, find the geocentric angle $\theta$
@@ -201,14 +205,14 @@ and
     tan(\psi_{A/B})=\frac{cos(\varphi_A)sin(\lambda_A-\lambda_B)}{sin(\varphi_A)cos(\varphi_B)-cos(\varphi_A)sin(\varphi_B)cos(\lambda_A-\lambda_B)}
 \end{equation*}
 The third angle of the navigational triangle is the angle at the North Pole. The value of this angle is equal to 
-$\lambda_B - \lambda_A$. The spherical excess $E$ is the sum of these three angles: the azimuth angles 
+$\lambda_B - \lambda_A$. $E$ is the sum of these three angles: the azimuth angles 
 and the angle at the North Pole. 
 
-All together four methods have been presented to calculate envelope area.
-Figure~\ref{fig:CmpAreaCDF} summarizes the differences in calculating the envelope area using equations \eqref{eq:SAEllipsoid},
-\eqref{eq:SAProjection}, \eqref{eq:SASphere}, and \eqref{eq:SAGirard}.
-Taking the surface of revolution method discussed in Section~\ref{sec:SREllipse} as the benchmark, this plot shows 
-the distribution of differences of area from the benchmark.
+All together four methods have been presented to calculate geodetic envelope area.
+Figure~\ref{fig:CmpAreaCDF} summarizes the differences in calculating this area using 
+equations \eqref{eq:SAEllipsoid}, \eqref{eq:SAProjection}, \eqref{eq:SASphere}, and \eqref{eq:SAGirard}.
+Taking the surface of revolution method discussed in Section~\ref{sec:SREllipse} as the benchmark, the figure 
+shows the distribution of differences of surface area from the benchmark.
 
 \begin{figure}[H]
     \centering
@@ -217,7 +221,7 @@ the distribution of differences of area from the benchmark.
     \label{fig:CmpAreaCDF}
 \end{figure}
 The Projection method is the closest in agreement with the benchmark since both methods assume an
-ellipsoidal earth-model. There are minor deviations in area for larger size envelopes.
+ellipsoidal earth-model. There are minor deviations in surface area for larger size envelopes.
 Both the spherical surface of revolution formula \eqref{eq:SASphere} and spherical geometrical
 formula \eqref{eq:SAGirard} are in good agreement with the benchmark. The deviations in these
 two methods correspond to smaller and larger latitudes, as shown in Figure~\ref{fig:CmpAreaSphere}. 
@@ -267,12 +271,12 @@ PP = \frac{\pi}{4}\frac{b}{a}[E^2(e)]^{-1}
 \]
 If $a=b$ (a circle) then $PP=1$, if $a=2$, $b=1$ then $PP=0.71$, and if $a=4$, $b=1$ then $PP=0.49$.
 \end{example}
-These examples show that the ratio area of a district $D$ divided by area of a circle $R$ 
+These examples show that the ratio: area of a district $D$ divided by area of a circle $R$ 
 can lead to low compactness scores even for reasonably shaped districts 
 such as rectangles or ellipses. 
 This fact, illustrated for the Polsby-Popper score, would also hold true for the other metrics
 based on the circle: Roeck and Schwartzberg.
-This is obvious since the circle doesn't cover these reasonably shaped districts very well.
+This is obvious since, in general, the circle doesn't cover rectangles or ellipses very well.
 
 \section{Results}
 In the results of this section the area of the geodetic envelope was computed using \eqref{eq:SAEllipsoid}.
@@ -326,9 +330,10 @@ that the Geodetic Envelope score is more suitable than the Polsby-Popper score.
 
 The not simply-connected archipeligo districts AK00 and HI02 in Alaska and Hawaii, respectively, 
 have by far the worst compactness scores.
-For example, the Polsby-Popper score of AK00 is $O(10^{-4})$. Thus, when comparing the bottom 5 districts,
-these states were considered outliers and removed from the analysis. Table \ref{tab:bottom5-districts}
-compares the bottom 5 district scores 
+For example, the Polsby-Popper score of AK00 is $O(10^{-4})$. 
+Thus, when comparing the bottom 5 districts, the states Alaska and Hawaii were considered outliers 
+and removed from the analysis. 
+Table \ref{tab:bottom5-districts} compares the bottom 5 district scores 
 \begin{table}[H]
 \centering
 \begin{tabular}{|c|c|}
@@ -365,7 +370,7 @@ for the Geodetic Envelope Score and $((.0295-.0260) / .02775) * 100 = 12.61\%$ f
 The Geodetic Envelope Score does a better job of distinguishing districts with low compactness scores.
 
 \subsection{State Comparison}
-Finally, a state-wide comparison was made by calculating the average of the Geodetic Envelope and Polsby-Popper 
+A state-wide comparison was made by calculating the average of the Geodetic Envelope and Polsby-Popper 
 scores over all the districts of each state. The goal of this comparison was to measure the districting of 
 states on average. Table~\ref{tab:bottom10-states} shows the states with the lowest scores according to each measure.
 \begin{table}[H]
@@ -408,22 +413,22 @@ Rank & State & Nr. Districts & Score \\
 \label{tab:bottom10-states}
 \end{table}
 To interpret this ranking it is helpful to consider only those states with at least 3 districts. 
-This excludes the states AK, HI, NH and RI. 
+This excludes AK, HI, NH and RI. 
 In this case, the bottom three states are LA, MA and IL according to both measures.
 
 \subsection{Ratings}
-Since the Geodetic Envelope scores range over the interval $(0,1)$ as seen in Figure \ref{fig:Histogram}
-or in Tables \ref{tab:top5-districts} and \ref{tab:bottom5-districts}, a user-friendly rating designation 
-can be adopted. Dividing $[0,1]$ into 10 equal parts given by $[0.1*(n-1), 0.1*(n)]$ for $n=1,2,\ldots,10$, 
-and labeling each part in the bond-like fashion 
+As seen in Figure \ref{fig:Histogram} or in Tables \ref{tab:top5-districts} and \ref{tab:bottom5-districts},
+the Geodetic Envelope score ranges over the interval $(0,1)$.
+Dividing the interval into 10 equal parts given by $[0.1*(n-1), 0.1*(n)]$ for $n=1,2,\ldots,10$, 
+and labeling each part
 \[
 \{AAA, \mathpunct{\allowbreak} AA, \mathpunct{\allowbreak} A, \mathpunct{\allowbreak} BBB, \mathpunct{\allowbreak} BB, 
 \mathpunct{\allowbreak} B, \mathpunct{\allowbreak} CCC, \mathpunct{\allowbreak} CC, \mathpunct{\allowbreak} C, 
 \mathpunct{\allowbreak} D\}
 \]
-is a simple way to classify districts or states according to their compactness scores.
-Table~\ref{tab:district-ratings} shows the results of applying this rating system to some of the districts in Tables 
-\ref{tab:top5-districts} and \ref{tab:bottom5-districts}.
+the Geodetic Envelope score can be identified with a user-friendly, bond-like rating.
+Table~\ref{tab:district-ratings} shows the results of applying this rating assignment to some of the 
+districts in Tables \ref{tab:top5-districts} and \ref{tab:bottom5-districts}.
 \begin{table}[H]
 \centering
 \begin{tabular}{|c|c|}
@@ -445,8 +450,8 @@ A number of methods were developed to compute this score stemming from a sundry 
 disciplines. The characteristics and limitations of each method was summarized.
 In comparison with the Polsby-Popper score the Geodetic Envelope score computed values are more in line with
 expectations, especially for reasonably shaped districts. 
-Finally, the Geodetic Envelope score permits a user-friendly rating system to be defined to classify the compactness
-of a district.
+Finally, the Geodetic Envelope score permits the assignment of a user-friendly rating to classify the 
+compactness of a district.
 \appendix
 \renewcommand{\theequation}{\Alph{section}.\arabic{equation}}
 \setcounter{equation}{0}
