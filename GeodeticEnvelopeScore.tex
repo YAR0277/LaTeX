@@ -14,6 +14,7 @@
 \usepackage{amsmath}
 \usepackage{graphicx}
 \usepackage{float}
+\usepackage[colorlinks=true, urlcolor=blue, linkcolor=blue, citecolor=blue]{hyperref}
 
 % Numbered examples without section number
 \newtheorem{example}{Example}
@@ -463,6 +464,7 @@ In comparison with the Polsby-Popper score the Geodetic Envelope score computed 
 expectations, especially for reasonably shaped districts. 
 Finally, the Geodetic Envelope score permits the assignment of a user-friendly rating to classify the 
 compactness of a district.
+
 \appendix
 \renewcommand{\theequation}{\Alph{section}.\arabic{equation}}
 \setcounter{equation}{0}
@@ -522,9 +524,17 @@ of a geodetic envelope is
 \end{equation*}
 A similar derivation can be done for \eqref{eq:SASphere} by assuming the earth geoid is 
 modeled by a sphere of radius $a$.
-\\
-\\
+
+\section*{Conflict of Interest}
 On behalf of all authors, the corresponding author states that there is no conflict of interest.
+
+\section*{Data Availability Statement}
+Congressional District data was downloaded from the ArcGIS Hub website:\\
+\url{https://hub.arcgis.com/datasets/usdot::congressional-districts/explore}. 
+\\
+\\
+The outputs from calculations described in this manuscript can be found in the file "DistrictTable.csv" in the GIT Hub repository:\\
+\url{https://github.com/YAR0277/LaTeX}.
 
 \newpage
 \printbibliography
