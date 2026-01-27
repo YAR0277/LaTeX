@@ -1,7 +1,7 @@
 \documentclass{article}
 \author{David Gore\thanks{davidgore@protonmail.com}}
 \title{The Geodetic Envelope Score}
-\date{January 19, 2026}
+\date{January 27, 2026}
 
 \usepackage[
     backend=biber,
@@ -26,15 +26,16 @@
 Google Scholar Profile: Not available for the author.
 
 \begin{abstract}
-A compactness metric is introduced which can be used to measure the degree of gerrymandering in a U.S. Congressional voting district.
-The metric is defined using a geodetic envelope: a polygon bounded by lines of latitude and longitude on the surface of the earth.
-The metric was motivated by noticing that many of the original state boundaries were defined using meridians and parallels. The
-metric requires that the surface area of a geodetic envelope is calculated; which is done using multiple methods in applied mathematics.
-The resulting compactness scores show many advantages over currently used metrics such as Reock, Polsby-Popper and Schwatzberg. A 
-bond-like rating system based on the new metric is suggested to simplify the communication of a district's compactness score.
+A measure is introduced which can be used to determine the degree of gerrymandering in a U.S. Congressional voting district.
+The measure is defined using a geodetic envelope: a polygon bounded by lines of latitude and longitude on the surface of the earth.
+The measure was motivated by noticing that many of the original state boundaries were defined using meridians and parallels. The
+measure requires that the surface area of a geodetic envelope is calculated; which is done using multiple methods in applied mathematics.
+The resulting gerrymandering scores show many advantages over currently used compactness metrics such as Reock, Polsby-Popper and Schwatzberg. A 
+bond-like rating system based on the new gerrymandering score is suggested to simplify communication of the extent to which a district 
+is gerrymandered.
 \end{abstract}
 
-\noindent\textbf{Keywords:} Gerrymandering; District Compactness; Geodetic Envelope
+\noindent\textbf{Keywords:} Gerrymandering score; Geodetic Envelope: Polsby-Popper score
 
 \section{Introduction}
 Several measures have been proposed to quantify the degree to which congressional districts are 
@@ -55,9 +56,14 @@ Kansas, Nebraska, South Dakota and North Dakota all have 3° of latitudinal heig
 Wyoming and Montana all have 4°. Washington, Oregon, Colorado, Wyoming,
 North Dakota and South Dakota all have about 7° of longitudinal width. The southern borders of Virginia,
 Kentucky and Missouri are all at 37.5° latitude. Indeed a large section of the northern border of the 
-United States is at 49° latitude. Thus, it seems natural to use lines of latitude and longitude in the 
-definition of a compactness score for voting districts.
+United States is at 49° latitude. Topologically speaking, the states define a covering of the geographical United States.
+This covering is in large part based on lines of latitude and longitude.
 
+As the story goes the term ``Gerry-mander'' was coined in 1812 after a review of redistricting maps set by Governor 
+Elbridge Gerry of Massachusetts. Due to its undefinable character, when referring to gerrymandered or oddly shaped voting districts, 
+people often say ``I know it when I see it.'' The voting districts are a refinement of the state covering.
+It is our contention that the visual perception of a voting district being regular or not depends on whether the refinement cover is also
+based on lines of latitude and longitude. Thus it seemed necessary to include these lines into a measure of gerrymandering.
 
 \section{The Geodetic Envelope Score}
 
@@ -68,11 +74,17 @@ longitude and $\varphi$ denotes geodetic latitude. As a measure of district gerr
 \textit{Geodetic Envelope Score} defined as follows.
 \begin{definition}[Geodetic Envelope Score]
 Let $D$ be a district and $S$ the geodetic envelope containing $D$. The Geodetic Envelope Score of district $D$ is
-\[GE = \frac{A(D)}{A(S)}
+\[GES = \frac{A(D)}{A(S)}
 \]
 where $A$ is the area operator.
 \end{definition}
-$S$ is a surface on the WGS-84 reference ellipsoid model of the earth.
+$S$ is a surface on the WGS-84 reference ellipsoid model of the earth. The value of the Geodetic Envelope Score depends on 
+the envelope or bounding polygon. This implies that the Geodetic Envelope Score is not an intrinsic geometrical measure 
+of the district itself. For example, it is not rotation invariant. Rather, the Geodetic Envelope Score measures 
+how well a given district is covered by an envelope, or, in other words, how well it fits into the
+grid of meridians and parallels. Districts whose major, minor-axes are rastered on these lines are good fits and 
+result in higher scores, while districts whose major, minor-axes are rotated away from these lines are penalized and 
+result in lower scores.
 
 \subsection{Envelope Area as a Surface of Revolution}
 \label{sec:SREllipse}
@@ -302,8 +314,8 @@ Figure~\ref{fig:Histogram} compares the Geodetic Envelope score with the Polsby-
     \label{fig:Histogram}
 \end{figure}
 The average value of the Geodetic Envelope score, $0.4724$, is almost twice that of the 
-Polsby-Popper score, $0.2465$. This implies that geodetic envelopes are more suited as a compactness 
-measure than circles.
+Polsby-Popper score, $0.2465$. This implies that geodetic envelopes are a more suitable comparator 
+than circles.
 
 \subsection{District Comparison}
 Table~\ref{tab:top5-districts} compares the top 5 district scores: Geodetic Envelope and Polsby-Popper
@@ -458,14 +470,14 @@ CA42 & D \\ \hline
 \end{table}
 
 \section{Conclusion}
-The Geodetic Envelope Score was shown to be a natural measure of district compactness because it is
+The Geodetic Envelope Score was shown to be a natural measure of district gerrymandering because it is
 defined using ``parallels'' and ``meridians''; the lines used in the original definition of state boundaries.
 A number of methods were developed to compute this score stemming from a sundry of applied mathematical
 disciplines. The characteristics and limitations of each method was summarized.
 In comparison with the Polsby-Popper score the Geodetic Envelope score computed values are more in line with
 expectations, especially for reasonably shaped districts. 
 Finally, the Geodetic Envelope score permits the assignment of a user-friendly rating to classify the 
-compactness of a district.
+gerrymandering of a district.
 
 \appendix
 \renewcommand{\theequation}{\Alph{section}.\arabic{equation}}
