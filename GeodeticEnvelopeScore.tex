@@ -1,6 +1,6 @@
 \documentclass{article}
 \author{David Gore\thanks{davidgore@protonmail.com}}
-\title{The Geodetic Envelope Score}
+\title{Research Note: The Geodetic Envelope Score}
 \date{January 27, 2026}
 
 \usepackage[
@@ -15,6 +15,8 @@
 \usepackage{graphicx}
 \usepackage{float}
 \usepackage[colorlinks=true, urlcolor=blue, linkcolor=black, citecolor=black]{hyperref}
+\usepackage{xurl}
+\usepackage{hyperref}
 
 % Numbered examples without section number
 \newtheorem{example}{Example}
@@ -22,8 +24,6 @@
 
 \begin{document}
 \maketitle
-
-Google Scholar Profile: Not available for the author.
 
 \begin{abstract}
 A measure is introduced which can be used to determine the degree of gerrymandering in a U.S. Congressional voting district.
@@ -75,7 +75,7 @@ longitude and $\varphi$ denotes geodetic latitude. As a measure of district gerr
 \textit{Geodetic Envelope Score} defined as follows.
 \begin{definition}[Geodetic Envelope Score]
 Let $D$ be a district and $S$ the geodetic envelope containing $D$. The Geodetic Envelope Score of district $D$ is
-\[GES = \frac{A(D)}{A(S)}
+\[GE = \frac{A(D)}{A(S)}
 \]
 where $A$ is the area operator.
 \end{definition}
@@ -485,7 +485,7 @@ gerrymandering of a district.
 \setcounter{equation}{0}
 
 \newpage
-\section{Appendix}
+\section*{Appendix}
 \subsection*{Formulas}
 The elliptical integral of the second kind is given by
 \[
@@ -509,15 +509,12 @@ the surface area of the surface of revolution obtained from revolving a region f
 by substituting $dx/dy = -a^2y/b^2x$ into the above equation
 \begin{align*}
     S(y)&= 2\pi\int_{y}^{b}x\sqrt{\frac{b^4x^2+a^4y^2}{b^4x^2}} \,dy \\
-        &= \frac{2\pi}{b^2}\int_{y}^{b}\sqrt{b^4x^2+a^4y^2} \, dy \\
-        &= \frac{2\pi}{b^2}\int_{y}^{b}\sqrt{b^4(a^2-\frac{a^2}{b^2y^2})+a^4y^2} \, dy \\
-        &= \frac{2\pi}{b^2}(ab)\int_{y}^{b}\sqrt{b^2-y^2+\frac{a^2}{b^2}y^2} \, dy \\
         &= 2\pi(\frac{a}{b})\int_{y}^{b}\sqrt{b^2+\frac{a^2-b^2}{b^2}y^2} \, dy \\
         &= 2\pi(\frac{a}{b})\int_{y}^{b}\sqrt{b^2+e'^2y^2} \, dy \\
 \end{align*}
-The surface area of the latitudinal band between points $y=y_1$ and $y=y_2$ is $S=S(y_1)-S(y_2)$, or
+The surface area of the latitudinal band between points $y=y_1$ and $y=y_2$ is then $S=S(y_1)-S(y_2)$, or
 \begin{equation*}
-    S = 2\pi\int_{y_1}^{y_2} \sqrt{b^2+e'^2y^2} \,dy
+    S = 2\pi(\frac{a}{b})\int_{y_1}^{y_2} \sqrt{b^2+e'^2y^2} \,dy
 \end{equation*}
 where $y_1 = N(1-e^2)sin(\varphi_1)$ and $y_1 = N(1-e^2)sin(\varphi_2)$. To evaluate the integral let $y=(b/e')tan(u)$. 
 The integral becomes
@@ -544,12 +541,8 @@ modeled by a sphere of radius $a$.
 On behalf of all authors, the corresponding author states that there is no conflict of interest.
 
 \section*{Data Availability Statement}
-Congressional District data was downloaded from the ArcGIS Hub website:\\
+Congressional District data was downloaded from the ArcGIS Hub website:
 \url{https://hub.arcgis.com/datasets/usdot::congressional-districts/explore}. 
-\\
-\\
-The outputs from calculations described in this manuscript can be found in the file "DistrictTable.csv" in the GIT Hub repository:\\
-\url{https://github.com/YAR0277/LaTeX}.
 
 \newpage
 \printbibliography
